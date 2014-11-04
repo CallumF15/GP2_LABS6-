@@ -28,7 +28,7 @@ protected:
 	std::string m_Type;
 	bool m_Active;
 
-//private:
+private:
 
 
 
