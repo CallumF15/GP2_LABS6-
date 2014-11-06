@@ -4,6 +4,11 @@
 #include "Component.h"
 #include <GL/glew.h>
 
+
+#include <SDL.h>
+#include <SDL_opengl.h>
+#include <gl/GLU.h>
+
 class Mesh : public Component{
 
 public:
@@ -12,27 +17,32 @@ public:
 	~Mesh();
 
 	//Methods
-	void update(); //double check this (Section 3 start)
+	void bind();
+	void init();
+	void destroy();
+
+
+	void copyVertexData(int count, int stride, void** data);
+	void copyIndexData(int count, int stride, void** data);
 
 	//Getters
-	glm::vec3 &getPosition();
-	glm::vec3 &getScale();
-	glm::vec3 &getRotation();
-	glm::vec3 &getModel();
+	int getVertexCount();
+	int getIndexCount();
 
+
+	
 	//Setters
-	void setPosition();
-	void setScale();
-	void setRotation();
-	void setModel();
+
+
+
+
 
 protected:
 
 private:
-	glm::vec3 m_Position;
-	glm::vec3 m_Scale;
-	glm::vec3 m_Rotation;
-	glm::mat4 m_Model;
+	//variables
+	GLuint m_VBO, m_EBO, m_VAO;
+	int m_VertexCount, m_IndexCount;
 
 
 };

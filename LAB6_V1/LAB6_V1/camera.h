@@ -1,33 +1,48 @@
-#ifndef camera_h
-#define camera_h
+#ifndef Camera_h
+#define Camera_h
 
-//Following LazyFoo's tutorial
-//http://lazyfoo.net/SDL_tutorials/lesson21/index.php
 
-class camera{
+#include "Component.h"
 
-private:
-	//The X and Y offsets of the dot
-	int x, y;
+#include <glm\glm\glm.hpp>
+#include <glm/glm/gtc/matrix_transform.hpp>
 
-	//The velocity of the dot
-	int xVel, yVel;
+class Camera : public Component{
+
+
 
 public:
-	//Initializes the variables
-	camera();
+	Camera();
+	~Camera();
 
-	//Takes key presses and adjusts the dot's velocity
-	void handle_input();
+	void setPosition(float x, float y, float z);
+	void setLookAt(float x, float y, float z);
+	void setUp(float x, float y, float z);
+	void setFOV(float fov);
+	void setAspectRatio(float aspectratio);
+	void setNearClip(float nearclip);
+	void setFarClip(float farclip);
 
-	//Moves the dot
-	void move();
+	glm::mat4 getViewMatrix();
+	glm::mat4 getProjectionMatrix();
 
-	//Shows the dot on the screen
-	void show();
+	void update();
 
-	//Sets the camera over the dot
-	void set_camera();
+private:
+	glm::vec3 m_Position;
+	glm::vec3 m_LookAt;
+	glm::vec3 m_Up;
+	float m_FOV;
+	float m_AspectRatio;
+	float m_NearClip;
+	float m_FarClip;
+	glm::mat4 m_ViewMatrix;
+	glm::mat4 m_ProjectionMatrix;
+protected:
+
+
+
 };
+
 
 #endif

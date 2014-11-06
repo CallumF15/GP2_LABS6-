@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "GameObject.h"
 
 
 	//Constructor
@@ -27,4 +28,8 @@
 	bool Component::isActive()
 	{
 		return m_Active;
+	}
+
+	void Component::setParent(GameObject *object){
+		m_Parent = object;
 	}

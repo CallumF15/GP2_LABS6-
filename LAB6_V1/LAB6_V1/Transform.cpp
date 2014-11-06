@@ -1,5 +1,13 @@
 #include "Transform.h"
 
+Transform::Transform(){
+	m_Type = "Transform";
+}
+
+Transform::~Transform()
+{
+
+}
 
 
 void Transform::update()
