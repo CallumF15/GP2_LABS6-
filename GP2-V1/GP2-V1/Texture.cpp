@@ -1,6 +1,8 @@
 #include "Texture.h"
 
-//Will clean up the surface as well;
+//test
+
+
 GLuint convertSDLSurfaceToGLTexture(SDL_Surface * surface)
 {
 	GLuint textureID = 0;
